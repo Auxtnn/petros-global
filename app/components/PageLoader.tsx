@@ -5,14 +5,33 @@ import { motion } from "framer-motion";
 
 export const PageLoader = () => {
   const [loading, setLoading] = useState(true);
+  const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
 
-  // Simulate page loading
+  // Get window dimensions after component mounts (client-side only)
   useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Set initial size
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Simulate page loading
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
 
-    return () => clearTimeout(timer);
+    // Clean up
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   const circleVariants = {
@@ -37,31 +56,33 @@ export const PageLoader = () => {
         {/* Radial gradient background */}
         <div className="absolute inset-0 bg-gradient-radial from-[#dc8617]/20 via-black to-black transform scale-125"></div>
 
-        {/* Animated particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 md:w-2 md:h-2 rounded-full bg-[#dc8617]/80"
-              initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                opacity: 0,
-              }}
-              animate={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                opacity: [0, 1, 0],
-                scale: [0, 1.5, 0],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 5,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
+        {/* Animated particles - client-side only */}
+        {typeof window !== "undefined" && (
+          <div className="absolute inset-0">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 md:w-2 md:h-2 rounded-full bg-[#dc8617]/80"
+                initial={{
+                  x: Math.random() * windowSize.width,
+                  y: Math.random() * windowSize.height,
+                  opacity: 0,
+                }}
+                animate={{
+                  x: Math.random() * windowSize.width,
+                  y: Math.random() * windowSize.height,
+                  opacity: [0, 1, 0],
+                  scale: [0, 1.5, 0],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 5,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
+          </div>
+        )}
 
         <div className="relative z-10">
           {/* Main animated element */}

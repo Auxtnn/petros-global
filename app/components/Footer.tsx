@@ -38,11 +38,11 @@ const Footer = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center gap-4">
               <Image
-                alt="Smart Folks Real Estate"
+                alt="The Hamptons Real Estate"
                 src="/assets/logo2.png"
                 width={60}
                 height={60}
-                className="rounded-full shadow-lg"
+                className=""
                 unoptimized
               />
               <h3 className="text-xl font-bold text-gray-900">
