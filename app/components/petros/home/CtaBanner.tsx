@@ -50,7 +50,7 @@ const CTABanner = () => {
             viewport={{ once: true }}
           >
             <Link
-              href="/contact"
+              href="#"
               className="inline-flex items-center bg-[#dc8617] hover:text-[#dc8617] text-white border border-[#dc8617] px-8 py-3 rounded-md font-semibold hover:bg-transparent transition-colors"
             >
               Start a Conversation
