@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+  --foreground-rgb: 14, 14, 16;
+  --background-rgb: 245, 245, 245;
+  --navbar-background-rgb: 250, 250, 250;
+}
+
+.dark {
+  --foreground-rgb: 245, 245, 245;
+  --background-rgb: 14, 14, 16;
+  --navbar-background-rgb: 5, 15, 39;
+}
+
+* {
+  font-family: "CabinetGrotesk" !important;
+}
+
+body {
+  font-family: "Satoshi";
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+  --navbar-background: rgb(var(--navbar-background-rgb));
+}
+
+.dark body {
+  background-color: #333;
+  color: #fff;
+}
+
+.light body {
+  background-color: #fff;
+  color: #333;
+}
+
+.navbar {
+  background-color: var(--navbar-background);
+}
+/* Custom Cabinet Grotesk Font */
+@font-face {
+  font-family: CabinetGrotesk;
+  src: url("../public/fonts/CabinentGrotesk/CabinetGrotesk-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CabinetGrotesk;
+  src: url("../public/fonts/CabinentGrotesk/CabinetGrotesk-Bold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CabinetGrotesk;
+  src: url("../public/fonts/CabinentGrotesk/CabinetGrotesk-Medium.otf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CabinetGrotesk;
+  src: url("../public/fonts/CabinentGrotesk/CabinetGrotesk-Light.otf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CabinetGrotesk;
+  src: url("../public/fonts/CabinentGrotesk/CabinetGrotesk-Extralight.otf");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CabinetGrotesk;
+  src: url("../public/fonts/CabinentGrotesk/CabinetGrotesk-Black.otf");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CabinetGrotesk;
+  src: url("../public/fonts/CabinentGrotesk/CabinetGrotesk-Extrabold.otf");
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Satoshi Font */
+@font-face {
+  font-family: Satoshi;
+  src: url("../public/fonts/Satoshi/Satoshi-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("../public/fonts/Satoshi/Satoshi-Bold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("../public/fonts/Satoshi/Satoshi-Medium.otf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("../public/fonts/Satoshi/Satoshi-Light.otf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("../public/fonts/Satoshi/Satoshi-Regular.otf");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("../public/fonts/Satoshi/Satoshi-Black.otf");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("../public/fonts/Satoshi/Satoshi-Bold.otf");
+  font-weight: 800;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #dc8617 86%, #ededed 12%);
+  transition: all 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #222224;
+}
+
+::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
