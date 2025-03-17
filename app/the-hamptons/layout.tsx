@@ -7,9 +7,8 @@ import Footer from "../components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Smart Folks Real Estate Brokers",
-  description:
-    "Property Management Company in UAE, Dubai, United Arab Emirates.",
+  title: "The Hamptons Estate",
+  description: "Real Estate and Property Management Company in Awka, Nigeria",
 };
 
 export default function RootLayout({
