@@ -56,75 +56,78 @@ const Header = () => {
   ];
 
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-black/85 backdrop-blur-md py-2 shadow-lg"
-          : "bg-gradient-to-b from-black/70 to-transparent py-4"
-      }`}
-    >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo with subtle animation */}
-        <Link href="/" className="flex items-center z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative h-16 w-16 mr-2"
-          >
-            <Image
-              src="/assets/logo1.png"
-              alt="Petros Global Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </motion.div>
-        </Link>
-
-        {/* Desktop Navigation with elegant hover effects */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navigationLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-white text-sm font-medium relative group py-2"
+    <>
+      <header
+        className={`fixed w-full z-40 transition-all duration-300 ${
+          scrolled
+            ? "bg-black/85 backdrop-blur-md py-2 shadow-lg"
+            : "bg-gradient-to-b from-black/70 to-transparent py-4"
+        }`}
+      >
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          {/* Logo with subtle animation */}
+          <Link href="/" className="flex items-center z-10">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative h-16 w-16 mr-2"
             >
-              <span>{link.name}</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#dc8617] transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="ml-4 bg-[#dc8617] hover:bg-[#dc8617]/90 text-white px-6 py-2 rounded-full transition-all transform hover:scale-105 shadow-md"
-          >
-            Get in touch
+              <Image
+                src="/assets/logo1.png"
+                alt="Petros Global Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </motion.div>
           </Link>
-        </nav>
 
-        {/* Mobile menu button with animation */}
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          className="lg:hidden text-white z-10 bg-[#dc8617]/20 p-2 rounded-full backdrop-blur-sm"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </motion.button>
-      </div>
+          {/* Desktop Navigation with elegant hover effects */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-white text-sm font-medium relative group py-2"
+              >
+                <span>{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#dc8617] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              className="ml-4 bg-[#dc8617] hover:bg-[#dc8617]/90 text-white px-6 py-2 rounded-full transition-all transform hover:scale-105 shadow-md"
+            >
+              Get in touch
+            </Link>
+          </nav>
 
-      {/* Mobile Sidebar Navigation */}
+          {/* Mobile menu button with animation */}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            className="lg:hidden text-white z-10 bg-[#dc8617]/20 p-2 rounded-full backdrop-blur-sm"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </motion.button>
+        </div>
+      </header>
+
+      {/* Mobile Sidebar Navigation - Moved outside header to ensure highest z-index */}
       <AnimatePresence>
         {isOpen && (
-          <>
+          <div className="relative">
             {/* Backdrop overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm lg:hidden z-40"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm lg:hidden z-[999]"
               onClick={() => setIsOpen(false)}
+              style={{ position: "fixed" }}
             />
 
             {/* Sidebar */}
@@ -134,7 +137,8 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed top-0 right-0 h-full w-72 bg-gradient-to-b from-black to-gray-900 z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 h-full w-72 bg-gray-900 z-[1000]"
+              style={{ position: "fixed" }}
             >
               <div className="flex flex-col h-full">
                 {/* Logo area in sidebar */}
@@ -187,10 +191,10 @@ const Header = () => {
                 </div>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 
