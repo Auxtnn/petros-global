@@ -141,7 +141,7 @@ const Header = () => {
                 <div className="p-5 border-b border-white/10 flex justify-between items-center">
                   <div className="relative h-12 w-12">
                     <Image
-                      src="/images/logo1.png"
+                      src="/assets/logo1.png"
                       alt="Petros Global Logo"
                       fill
                       className="object-contain"
